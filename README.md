@@ -29,7 +29,7 @@ Standing up the consumer should be done first as it will simply sit and wait for
 
 The producer requires a bit more configuration. The producer needs a repository of archives to pull from in order to send them through the system. You can use Minio if testing locally and AWS creds if you are testing within one of our Openshift instance. If using Minio, the producer will need there to be archives currently in your minio instance and you may need to modify the bucket name if yours differ from the defaults.
 
-    $> ROLE=produce COMPONENT=<service> BOOTSTRAP_SERVERS=kafka:2902 MINIO_ACCESS_KEY=<string> MINIO_SECRET_KEY=<string> python app.py
+    $> ROLE=produce COMPONENT=<service> BOOTSTRAP_SERVERS=kafka:29092 MINIO_ACCESS_KEY=<string> MINIO_SECRET_KEY=<string> python app.py
 
 ### Using containers
 
