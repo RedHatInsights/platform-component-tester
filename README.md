@@ -1,6 +1,6 @@
 # Platform Component Tester
 
-The purpose of the platform component tester is to be able to test individual platform components in isolation. The test suite is composed of a consumer and a producer. The producer sends a pre-crafted method to the component being tested and the consumer reads from the queue on the other side of the component. The tester requires a kafka instane as well as the component to be current running in the environment you are testing with. The test can be run locally or in Openshift.
+The purpose of the platform component tester is to be able to test individual platform components in isolation. The test suite is composed of a consumer and a producer. The producer sends a pre-crafted method to the component being tested and the consumer reads from the queue on the other side of the component. The tester requires a kafka instance as well as the component to be current running in the environment you are testing with. The test can be run locally or in Openshift.
 
 ## Details
 
@@ -10,14 +10,14 @@ The below sequence diagram shows the workflow of the test
 
 ## Running
 
-The system expects kafka and the component to be up and running. You can do this by following the instructions in the repo for the component you are trying to test. Standing up each individual one might require differents steps and that is out of scope for this readme.
+The system expects kafka and the component to be up and running. You can do this by following the instructions in the repo for the component you are trying to test. Standing up each individual one might require different steps and that is out of scope for this readme.
 
 Requires: 
 Python >= 3.6 
 
 The app can be run directly from within a virtual environment, or deployed as a container using docker, podman, or Openshift.
 
-When the consumer pulls in the message it will read the `elapsed_time` key if it is available and print the time it spent in the component you are testing. This is an optional field and should be set within the app if at all possible. A secondary option is for the producer to tag the time, and the consumer to subtract that time when it receives the message. This incorporates kafka lag, so it may be that the tims are longer than they should be.
+When the consumer pulls in the message it will read the `elapsed_time` key if it is available and print the time it spent in the component you are testing. This is an optional field and should be set within the app if at all possible. A secondary option is for the producer to tag the time, and the consumer to subtract that time when it receives the message. This incorporates kafka lag, so it may be that the times are longer than they should be.
 
 ### Consumer
 
@@ -37,7 +37,7 @@ You can also build a container using source-to-image
 
     s2i build . centos/python-36-centos7 platform-component-tester:latest -e ENABLE_PIPENV=true
 
-Then you can simply lauch using docker or podman
+Then you can simply launch using docker or podman
 
     docker run -d platform-component-tester:latest
     OR
