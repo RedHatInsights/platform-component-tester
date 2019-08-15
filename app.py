@@ -12,7 +12,8 @@ logger = tester_logging.initialize_logging()
 
 def main():
 
-    component_map = {"pup": maps.PUP}
+    component_map = {"pup": maps.PUP,
+                     "hbi": maps.HBI}
     logger.info("Starting Component Tester")
     config.log_config()
 
