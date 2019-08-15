@@ -30,4 +30,4 @@ if __name__ == "__main__":
         main()
     except Exception:
         the_error = traceback.format_exc()
-        logger.error(f"Puptoo failed with Error: {the_error}")
+        logger.error(f"Platform Component Tester failed with Error: {the_error}")
