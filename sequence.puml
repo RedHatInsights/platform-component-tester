@@ -1,0 +1,13 @@
+@startuml Platform Component Tester
+participant producer
+entity produce_topic
+participant service
+entity consume_topic
+participant consumer
+producer->produce_topic: Send specific message to topic
+Note right of producer: The message is a crafted test message just to pass validation\nso it is forwarded to the other side
+produce_topic->service: Component ingests the test message
+service->consume_topic: Service sends message to topic
+consume_topic->consumer: consumer receives the message
+Note left of consumer: The consumer is configured on a different MQ group\nso it doesn't overlap real traffic
+@enduml
