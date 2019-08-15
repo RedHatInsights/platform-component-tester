@@ -24,7 +24,7 @@ if any("OPENSHIFT" in k for k in os.environ):
 else:
     AWS_ACCESS_KEY_ID = os.getenv('MINIO_ACCESS_KEY', None)
     AWS_SECRET_ACCESS_KEY = os.getenv('MINIO_SECRET_KEY', None)
-    S3_ENDPOINT_URL = os.getenv('S3_ENDPOINT_URL', "http://minio:9000")
+    S3_ENDPOINT_URL = os.getenv('S3_ENDPOINT_URL', "http://127.0.0.1:9000")
 
     s3 = boto3.client('s3',
                       endpoint_url=S3_ENDPOINT_URL,
@@ -55,8 +55,12 @@ def produce(topic, msg):
     keys = get_keys()
     for key in keys:
         url = get_url(key)
-        msg["request_id"] = key
-        msg["url"] = url
+        if config.COMPONENT == "hbi":
+            msg["platform_metadata"] = {"request_id": key,
+                                        "archive_url": url}
+        else:
+            msg["request_id"] = key
+            msg["url"] = url
         logger.info("sending message for ID %s", key)
         producer.send(topic, value=msg)
 
