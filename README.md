@@ -1,6 +1,6 @@
 # Platform Component Tester
 
-The purpose of the platform component tester is to be able to test individual platform components in isolation. The test suite is composed of a consumer and a producer. The producer sends a pre-crafted method to the component being tested and the consumer reads from the queue on the other side of the component. The tester requires a kafka instane as well as the component to be current running in the environment you are testing with. The test can be run locally or in Openshift.
+The purpose of the platform component tester is to be able to test individual platform components in isolation. The test suite is composed of a consumer and a producer. The producer sends a pre-crafted method to the component being tested and the consumer reads from the queue on the other side of the component. The tester requires a kafka instance as well as the component to be current running in the environment you are testing with. The test can be run locally or in Openshift.
 
 ## Details
 
