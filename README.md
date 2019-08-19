@@ -1,6 +1,6 @@
 # Platform Component Tester
 
-The purpose of the platform component tester is to be able to test individual platform components in isolation. The test suite is composed of a consumer and a producer. The producer sends a pre-crafted method to the component being tested and the consumer reads from the queue on the other side of the component. The tester requires a kafka instane as well as the component to be current running in the environment you are testing with. The test can be run locally or in Openshift.
+The purpose of the platform component tester is to be able to test individual platform components in isolation. The test suite is composed of a consumer and a producer. The producer sends a pre-crafted method to the component being tested and the consumer reads from the queue on the other side of the component. The tester requires a kafka instance as well as the component to be current running in the environment you are testing with. The test can be run locally or in Openshift.
 
 ## Details
 
@@ -29,7 +29,7 @@ Standing up the consumer should be done first as it will simply sit and wait for
 
 The producer requires a bit more configuration. The producer needs a repository of archives to pull from in order to send them through the system. You can use Minio if testing locally and AWS creds if you are testing within one of our Openshift instance. If using Minio, the producer will need there to be archives currently in your minio instance and you may need to modify the bucket name if yours differ from the defaults.
 
-    $> ROLE=produce COMPONENT=<service> BOOTSTRAP_SERVERS=kafka:2902 MINIO_ACCESS_KEY=<string> MINIO_SECRET_KEY=<string> python app.py
+    $> ROLE=produce COMPONENT=<service> BOOTSTRAP_SERVERS=kafka:29092 MINIO_ACCESS_KEY=<string> MINIO_SECRET_KEY=<string> python app.py
 
 ### Using containers
 
