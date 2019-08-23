@@ -24,7 +24,7 @@ def consume(topic):
     logger.info("Reading Topic: %s", topic)
     while True:
         for data in consumer:
-            msg = json.loads(data.value)
+            msg = data.value
             platform_metadata = msg.get("platform_metadata")
             if platform_metadata:
                 request_id = platform_metadata.get("request_id", -1)
